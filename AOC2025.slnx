@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Day1/">
+    <Project Path="AOC.Day01/AOC.Day01.csproj" />
+  </Folder>
+  <Folder Name="/Shared/">
+    <Project Path="AOC.Common/AOC.Common.csproj" />
+  </Folder>
+</Solution>
