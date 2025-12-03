@@ -2,6 +2,7 @@
   <Folder Name="/Day1/">
     <Project Path="AOC.Day01/AOC.Day01.csproj" />
     <Project Path="AOC.Day02/AOC.Day02.csproj" />
+    <Project Path="AOC.Day03/AOC.Day03.csproj" Id="5915a761-403e-449d-97d1-1a94470b62b3" />
   </Folder>
   <Folder Name="/Shared/">
     <Project Path="AOC.Common/AOC.Common.csproj" />
