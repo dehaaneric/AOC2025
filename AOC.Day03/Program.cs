@@ -10,7 +10,7 @@ namespace AOC.Day03
 
             var puzzle1 = PuzzleRefactor.Calc(batteryBanks, 2);
             Console.WriteLine($"Puzzle 1: {puzzle1}");
-            
+
             var puzzle2 = PuzzleRefactor.Calc(batteryBanks, 12);
             Console.WriteLine($"Puzzle 2: {puzzle2}");
         }
