@@ -10,7 +10,7 @@ namespace AOC.Day04
         {
             List<string> matrix = Console.In.ReadLines().Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
             //List<string> matrix =
-            //[
+            // [
             //    "..@@.@@@@.",
             //    "@@@.@.@.@@",
             //    "@@@@@.@.@@",
@@ -23,27 +23,40 @@ namespace AOC.Day04
             //    "@.@.@@@.@.",
             //];
 
-            var s1 = Stopwatch.GetTimestamp();
-            var totalRollsPuzzle1 = Puzzle1.Calc(matrix);
-            var s2 = Stopwatch.GetTimestamp();
+            List<string> source1 = [.. matrix];
+            var totalRollsPuzzle1 = Measure("Total rolls (Puzzle1)", () => Puzzle1.Calc(source1));
+            
+            List<string> source2 = [.. matrix];
+            var totalRollsPuzzle2 = Measure("Total rolls (Puzzle2)", () => Puzzle2.Calc(source2));
+            
+            List<string> source3 = [.. matrix];
+            var totalRollsPuzzle2CoPilot = Measure("Total rolls (Puzzle2CoPilot)", () => Puzzle2.Calc(source3));
 
-            var elapsedMs = (s2 - s1) * 1000 / Stopwatch.Frequency;
+            char[][] grid = ConvertMatrixToCharArray([.. matrix]);
+            var totalRollsPuzzle2Erik = Measure("Total rolls (Erik)", () => PuzzleErik.Calc(grid));
 
-            Console.WriteLine($"Total rolls: {totalRollsPuzzle1} in {elapsedMs}ms");
+        }
 
-            var s3 = Stopwatch.GetTimestamp();
-            var totalRollsPuzzle2 = Puzzle2.Calc(matrix);
-            var s4 = Stopwatch.GetTimestamp();
+        private static char[][] ConvertMatrixToCharArray(List<string> value)
+        {
+            var result = new char[value.Count][];
+            for (int i = 0; i < value.Count; i++)
+            {
+                result[i] = value[i].ToCharArray();
+            }
+            return result;
+        }
 
-            var elapsedMsPuzzle2 = (s4 - s3) * 1000 / Stopwatch.Frequency;
+        private static T Measure<T>(string label, Func<T> func)
+        {
+            var start = Stopwatch.GetTimestamp();
+            var result = func();
+            var end = Stopwatch.GetTimestamp();
 
-            var s5 = Stopwatch.GetTimestamp();
-            var totalRollsPuzzle2fast = Puzzle2Fast.Calc(matrix);
-            var s6 = Stopwatch.GetTimestamp();
+            var elapsedMs = (end - start) * 1000 / Stopwatch.Frequency;
+            Console.WriteLine($"{label}: {result} in {elapsedMs}ms");
 
-            var elapsedMsPuzzle2fast = (s6 - s5) * 1000 / Stopwatch.Frequency;
-
-            Console.WriteLine($"Total rolls: {totalRollsPuzzle2fast} in {elapsedMsPuzzle2fast}ms");
+            return result;
         }
     }
 }
