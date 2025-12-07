@@ -4,6 +4,7 @@
     <Project Path="AOC.Day02/AOC.Day02.csproj" />
     <Project Path="AOC.Day03/AOC.Day03.csproj" />
     <Project Path="AOC.Day04/AOC.Day04.csproj" Id="12075256-8b99-4ba6-b713-1f7fc0345f62" />
+    <Project Path="AOC.Day05/AOC.Day05.csproj" Id="36a70bf1-a1ac-45af-adc3-d4640b307578" />
   </Folder>
   <Folder Name="/Shared/">
     <Project Path="AOC.Common/AOC.Common.csproj" />
